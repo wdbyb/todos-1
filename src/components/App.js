@@ -10,7 +10,7 @@ const App = () => {
   const handleFormSubmit = (e, data) => {
     e.preventDefault();
 
-    setCards((prevState) => [...prevState, { ...data, id: cards.length + 1 }]);
+    setCards((prevState) => [...prevState, { ...data, id: Date.now() }]);
   };
 
   const handleCardDelete = (id) => {
@@ -21,16 +21,17 @@ const App = () => {
     <div className="container">
       <Form onSubmit={handleFormSubmit} />
       <div>
-        <h1>App</h1>
-        <div>
+        <div className="row">
           {cards.map((card, i) => (
-            <Card
-              onDelete={handleCardDelete}
-              title={card.title}
-              description={card.description}
-              id={card.id}
-              key={card.id}
-            />
+            <div className="col-md-4">
+              <Card
+                onDelete={handleCardDelete}
+                title={card.title}
+                description={card.description}
+                id={card.id}
+                key={card.id}
+              />
+            </div>
           ))}
         </div>
       </div>

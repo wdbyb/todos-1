@@ -12,30 +12,32 @@ const Form = (props) => {
   };
 
   return (
-    <form onSubmit={(e) => props.onSubmit(e, state)}>
-      <fieldset>
-        <label>
-          Title:
-          <input
-            type="text"
-            name="title"
-            value={state.title}
-            onChange={handleChange}
-          />
-        </label>
+    <form className="mb-3 pb-3 pt-3" onSubmit={(e) => props.onSubmit(e, state)}>
+      <fieldset className="form-group">
+        <label>Title:</label>
+        <input
+          className="form-control"
+          type="text"
+          name="title"
+          value={state.title}
+          onChange={handleChange}
+          autoComplete="off"
+        />
       </fieldset>
-      <fieldset>
-        <label>
-          Description:
-          <input
-            type="text"
-            name="description"
-            value={state.description}
-            onChange={handleChange}
-          />
-        </label>
+      <fieldset className="form-group">
+        <label>Description:</label>
+        <input
+          className="form-control"
+          type="text"
+          name="description"
+          value={state.description}
+          onChange={handleChange}
+          autoComplete="off"
+        />
       </fieldset>
-      <button type="submit">Submit</button>
+      <button className="btn btn-primary" type="submit">
+        Submit
+      </button>
     </form>
   );
 };
