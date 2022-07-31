@@ -17,6 +17,21 @@ const App = () => {
     setCards((prevState) => prevState.filter((card) => card.id !== id));
   };
 
+  const handleCardFavorite = (id, isFavorite) => {
+    setCards((prevState) =>
+      prevState.map((card) => {
+        if (card.id === id) {
+          return {
+            ...card,
+            favorite: !card.favorite,
+          };
+        }
+
+        return card;
+      })
+    );
+  };
+
   return (
     <div className="container">
       <Form onSubmit={handleFormSubmit} />
@@ -26,8 +41,10 @@ const App = () => {
             <div className="col-md-4">
               <Card
                 onDelete={handleCardDelete}
+                onFavorite={handleCardFavorite}
                 title={card.title}
                 description={card.description}
+                favorite={card.favorite}
                 id={card.id}
                 key={card.id}
               />
